@@ -1,5 +1,7 @@
 # rttyTCI - RTTY application using TCI Audio for macOS
 
+<img src="https://github.com/dl1bz/rttyTCI/blob/master/stuff/rttyTCI_screenshot.png" width="1024px" />
+
 rttyTCI is a RTTY (Radio Teletype) application for use in hamradio. Only TCI Audio streaming is supported, means a working TCI server is required. Classical analogue audio input and output via soundcard interfaces isn't and won't be supported.
 
 TCI - Transceiver Control Interface was mainly developed by Expert Electronics for a simple and still advanced connection between the ExpertSDR2/3 and third-party software. TCI has all required control commands similar to the CAT system, but even more, it can transfer IQ-streams from the ExpertSDR2/3 to clients (third-party software such as signal Skimmers, etc.) via the local network and the Internet, CW macros, and Audio In/Out streams for digital modes.
@@ -31,6 +33,19 @@ Sample Format:  float32 (no other sample_formats supported)
 Channels:       1 / mono
 Sample Rate:    48000 Hz (no other sample_rates supported)
 Block Size:     512 Samples
+
+Recommended app setup running RTTY in hamradio with rttyTCI:
+
+* tick ON: "Strict", SQL 60
+* Fill: LTRS (send diddles if idle)
+* Stop: 1.5 (1.5 stop bits)
+* TX: 0 (0db attenuation for send samples to TCI server)
+* BPF: OFF
+* Shape: Ramp 5
+* tick ON: UOS and Start CR/LF
+
+Use DIGL for RTTY, pay attention to set an offset (recommended 2210Hz for DIGL or 1500Hz for DIGU), otherwise you maybe have a "zero-beat" problem, if MARK is exact
+at the carrier frequency, because classical RTTY is FSK keying and not SSB like. But here we are using AFSK. In SSB the carrier is always suppressed - in the case if MARK is exact at this carrier supression point you will hear NOTHING. deskHPSDR support such an offset, go to RX Menu and press OFFSET RTTY, as far as I know ExpertSDR2/3 have such an offset too.
 
 ### Documentation
 
