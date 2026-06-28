@@ -1,0 +1,56 @@
+# rttyTCI - RTTY application using TCI Audio for macOS
+
+rttyTCI is a RTTY (Radio Teletype) application for use in hamradio. Only TCI Audio streaming is supported, means a working TCI server is required. Classical analogue audio input and output via soundcard interfaces isn't and won't be supported.
+
+TCI - Transceiver Control Interface was mainly developed by Expert Electronics for a simple and still advanced connection between the ExpertSDR2/3 and third-party software. TCI has all required control commands similar to the CAT system, but even more, it can transfer IQ-streams from the ExpertSDR2/3 to clients (third-party software such as signal Skimmers, etc.) via the local network and the Internet, CW macros, and Audio In/Out streams for digital modes.
+
+In the meantime a lot of other SDR host applications, like Thetis and my [deskHPSDR](https://github.com/dl1bz/deskhpsdr), provide a TCI Server too.
+
+### Requirements
+
+* ARM based Mac (M-series) running macOS 26.x "Tahoe"
+* working TCI Server with TCI audio streaming support, follow the TCI 2.0 standard
+* Hamradio transceiver equipment for receiving and sending RTTY signals
+* optional: logging application with support for FlexRadio/ADIF logdata transfer via UDP
+
+### Using rttyTCI
+
+rttyTCI is current in development state "early development", far away from "release" or "production release", so issues are possible.
+
+* receive and decoding RTTY signals work
+* encoding and transmit RTTY signals work
+* macro support and text templates included
+* options for adjust RTTY operation available
+* send log data to a supported hamradio log application work (format FlexRadio/ADIF via UDP)
+
+I run rttyTCI in RTTY operation successful with my deskHPSDR by using mode DIGL and 2210Hz Offset via TCI audio streaming and TCI CAT. SDR device was a Brick2 SDR transceiver, connected via Ethernet by running OpenHPSDR protocol P2. I made about 10 real QSOs in mode RTTY for tesing, all was working like expected.
+
+TCI Audio stream need the following parameter, equal to other apps like JTDX, MSHV or WSJT-X:
+
+Sample Format:  float32 (no other sample_formats supported)
+Channels:       1 / mono
+Sample Rate:    48000 Hz (no other sample_rates supported)
+Block Size:     512 Samples
+
+### Documentation
+
+No app documentation available yet, sorry. Maybe later...
+
+### App Bundle Notarization
+
+I don't have a paid Apple Developer Account and I don't plan to get one. That is why I unfortunately cannot officially notarize and digitally sign this app. Apple created this barrier, not I. If you don't accept this, go away and ignore this app.
+Otherwise, use `xattr -r -d com.apple.quarantine /Applications/RTTY-TCI.app` to allow my app to start on your Mac.
+
+### Licensing terms and conditions
+
+rttyTCI is published as freeware, but not as Open Source. That means, Source code will not be available.
+
+This rttyTCI app don't use any kind of foreign code or code parts, all program code was developed by myself.
+
+You can use this app without any additional costs. This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+There are no rights or obligations to get any kind of user support for rttyTCI from me, I publish only the app bundle "as it is". Exclusion of any Guarantee and any Warrenty. All what you do with this app is at your very own risk.
+
+This app was made without any commercial background or relationship. It's for use in Hamradio only for receive and transmit signals in classical RTTY mode 170 Hz shift and 45.45 baud.
+
+73 Heiko, DL1BZ
