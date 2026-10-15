@@ -1,8 +1,9 @@
-# rttyTCI - RTTY application using TCI Audio for macOS
+# rttyTCI - RTTY application using TCI Audio & TCI I/Q for macOS
 
-<img src="https://github.com/dl1bz/rttyTCI/blob/master/stuff/rttyTCI_screenshot.png" width="1024px" />
+<img src="stuff/rttyTCI_screenshot.png" width="1024px" />
 
 rttyTCI is a RTTY (Radio Teletype) application for use in hamradio. Only TCI Audio streaming is supported, means a working TCI server is required. Classical analogue audio input and output via soundcard interfaces isn't and won't be supported.
+In addition you need now TCI I/Q streaming support since version 0.3.0.
 
 ### What is TCI ?
 
@@ -12,14 +13,14 @@ In the meantime a lot of other SDR host applications, like Thetis and my [deskHP
 
 ### Requirements
 
-* ARM based Mac (M-series) running macOS 26.x "Tahoe"
-* working TCI Server with TCI audio streaming support, follow the TCI 2.0 standard
+* working TCI Server with TCI audio streaming and TCI I/Q streaming support, follow the TCI 2.0 standard
 * Hamradio transceiver equipment for receiving and sending RTTY signals
 * optional: logging application with support for FlexRadio/ADIF logdata transfer via UDP
 
 ### Using rttyTCI
 
-rttyTCI is current in development state "early development", far away from "release" or "production release", so issues are possible.
+rttyTCI is current in development state "early development", far away from "release" or "production release", so issues and/or code changes are possible at any time.
+Primarily this app is designed for use as RTTY console in combination with my deskHPSDR.
 
 * receive and decoding RTTY signals work
 * encoding and transmit RTTY signals work
@@ -36,6 +37,9 @@ Channels:       1 / mono
 Sample Rate:    48000 Hz (no other sample_rates supported)
 Block Size:     512 Samples
 
+TCI I/Q streaming:
+Sample Rate:    48k/96k/192k/384k supported
+
 Recommended app setup running RTTY in hamradio with rttyTCI:
 
 * tick ON: "Strict", SQL 60
@@ -49,14 +53,15 @@ Recommended app setup running RTTY in hamradio with rttyTCI:
 Use DIGL for RTTY, pay attention to set an offset (recommended 2210Hz for DIGL or 1500Hz for DIGU), otherwise you maybe have a "zero-beat" problem, if MARK is exact
 at the carrier frequency, because classical RTTY is FSK keying and not SSB like. But here we are using AFSK. In SSB the carrier is always suppressed - in the case if MARK is exact at this carrier supression point you will hear NOTHING. deskHPSDR support such an offset, go to RX Menu and press OFFSET RTTY, as far as I know ExpertSDR2/3 have such an offset too.
 
+In the case of deskHPSDR the app use deskHPSDRs build-in RTTY TX engine for TX now. This will be autodetected by the app with special, but not offical TCI commands only provided by deskHPSDR.
+
 ### Documentation
 
 No app documentation available yet, sorry. Maybe later...
 
 ### App Bundle Notarization
 
-I don't have a paid Apple Developer Account and I don't plan to get one. That is why I unfortunately cannot officially notarize and digitally sign this app. Apple created this barrier, not I. If you don't accept this, go away and ignore this app.
-Otherwise, use `xattr -r -d com.apple.quarantine /Applications/RTTY-TCI.app` to allow my app to start on your Mac.
+App is now officially notarize and digitally sign with my Apple Developer account.
 
 ### Licensing terms and conditions
 
