@@ -1,6 +1,6 @@
 # rttyTCI - RTTY application using TCI Audio & TCI I/Q for macOS
 
-<img src="stuff/rttyTCI_screenshot.png" width="1024px" />
+<img src="stuff/screenshot.png" width="1024px" />
 
 rttyTCI is a RTTY (Radio Teletype) application for use in hamradio. Only TCI Audio streaming is supported, means a working TCI server is required. Classical analogue audio input and output via soundcard interfaces isn't and won't be supported.
 In addition you need now TCI I/Q streaming support since version 0.3.0.
